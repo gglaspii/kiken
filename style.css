@@ -1,0 +1,190 @@
+A:link {text-decoration: none; color:blue}
+A:visited {text-decoration: none; color:blue}
+A:active {text-decoration: none; color:blue}
+A:hover {text-decoration: underline}
+
+body{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+}
+html {
+	margin:0;
+	padding:0;
+	color:#000;
+	background:#C8C8C8;
+}
+#wrap {
+	width:1000px;
+	margin:0 auto;
+	background:white;
+}
+#header {
+	padding:5px 10px;
+	background:#b9c9fe;
+}
+#headerStat {
+	padding:5px 10px;
+	background:white;
+}
+h1 {
+	margin:0;
+}
+#nav {
+	padding:5px 10px;
+	background:#b9c9fe;
+}
+#nav ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#nav li {
+	display:inline;
+	margin:0;
+	padding:0;
+}
+#main {
+	float:right;
+	width:780px;
+	padding:10px;
+	background:white;
+	font-size:small;
+}
+
+#container_history_balance{
+	float:right;
+	width:780px;
+	padding:10px;
+	background:white;
+	font-size:small;
+}
+
+h2 {
+	margin:0 0 1em;
+}
+#sidebar {
+	float:left;
+	width:180px;
+	padding:10px;
+	background:white;
+}
+#footer {
+	clear:both;
+	padding:5px 10px;
+	background:#b9c9fe;
+}
+#footer p {
+	margin:0;
+}
+* html #footer {
+	height:1px;
+}
+
+.inner-table
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	width: 100%;
+	margin: 2px;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+#box-table-a
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	width: 100%;
+	margin: 2px;
+	text-align: left;
+	border-collapse: collapse;
+}
+#box-table-a th
+{
+	font-size: 13px;
+	font-weight: normal;
+	text-align: center;
+	padding: 8px;
+	background: #b9c9fe;
+	border-top: 4px solid #aabcfe;
+	border-bottom: 1px solid #fff;
+	color: #039;
+}
+#box-table-a td
+{
+	padding: 8px;
+	background: #e8edff; 
+	border-bottom: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid transparent;
+}
+#box-table-a tr:hover td
+{
+	background: #d0dafd;
+	color: #339;
+}
+
+#box-table-b
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 2px;
+	text-align: left;
+	border-collapse: collapse;
+	border-top: 7px solid #9baff1;
+	border-bottom: 7px solid #9baff1;
+}
+#box-table-b th
+{
+	font-size: 13px;
+	font-weight: normal;
+	text-align: center;
+	padding: 8px;
+	background: #e8edff;
+	border-right: 1px solid #9baff1;
+	border-left: 1px solid #9baff1;
+	color: #039;
+}
+#ventil-table
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 2px;
+	text-align: left;
+	border-collapse: collapse;
+	border-top: 7px solid #9baff1;
+	border-bottom: 7px solid #9baff1;
+}
+#ventil-table th
+{
+	font-size: 13px;
+	font-weight: normal;
+	text-align: center;
+	padding: 8px;
+	background: #e8edff;
+	border-right: 1px solid #9baff1;
+	border-left: 1px solid #9baff1;
+	color: #039;
+}
+#box-table-b td
+{
+	padding: 8px;
+	background: #e8edff; 
+	border-right: 1px solid #aabcfe;
+	border-left: 1px solid #aabcfe;
+	color: #669;
+}
+
+#ventil-table td
+{
+	padding: 8px;
+	background: #e8edff; 
+	border-right: 1px solid #aabcfe;
+	border-left: 1px solid #aabcfe;
+	color: #669;
+}
+
+img.kicon
+{
+	vertical-align: middle
+}
