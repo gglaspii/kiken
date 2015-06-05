@@ -9,6 +9,7 @@ Money Manager
   - account name : eg "BNP compte courrant"
   - solde : this is the bank solde account at the kiken db creation time, futures transactions will increment or decrement this value.
   - user_id : the id of user from kiken.user table created in 2)
+4. set your db info in connect.inc.php
 
 ## Access
 
