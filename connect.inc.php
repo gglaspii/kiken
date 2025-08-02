@@ -1,9 +1,9 @@
 <?php
 // BDD
-$host="";
-$user="";
+$host="gordebsql.mysql.db";
+$user="gordebsql";
 $bdd=$user;
-$pass=""; 
+$pass="KpaIN0sr"; 
 
 if (!mysql_pconnect($host, $user, $pass))
 	mysql_pconnect($host2, $user2, $pass2) or die("connect error ".mysql_error());

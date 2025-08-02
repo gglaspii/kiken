@@ -102,9 +102,18 @@ function import_csv()
     <a href="main.php"><< Return</a>
 	<?php 
 	//import_csv();
-	$acc = new KAccount(1);
+	$acc = new KAccount(4);
 	process_http_post($acc, $_POST);
 	?>
+	
+	<form action="" method="post" enctype="multipart/form-data">
+	  <input name="upload_ofx" type="hidden" value="1">
+  Select image to upload:
+  <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload OFX" name="submit">
+</form>
+
+	
 	<form action="" method="post">
 <select name="datafile" size=5>
 <?foreach(glob("ressource"."/*.ofx") as $file) {

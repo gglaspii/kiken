@@ -25,7 +25,7 @@ function solde_at(id, account_id, at_date)
           confirm(str);
       }
   }
-  xmlhttp.open("GET","async/async.php?action=1&account_id="+account_id+"&at_date="+at_date,true);
+  xmlhttp.open("GET","async/async.php?action=1&account_id="+account_id+"&at_trans_id="+id+"&at_date="+at_date,true);
   xmlhttp.send();
 }
 </script>

@@ -350,7 +350,7 @@ class KAccount {
             array_push($auto_tag_array, $at_entry);
         }
 
-        while($row = $this->get_transactions(strtotime(date('Y-m-d') . ' -1 month'), date('Y-m-d'), 0, 0))
+        while($row = $this->get_transactions(date("Y-m-d", strtotime("-1 months")), date('Y-m-d'), 0, 0))
         {
 	        $tr_id = $row["tr_id"];
 	        $tags = $row["tags"];
@@ -586,7 +586,7 @@ class KAccount {
 
 		$title = "Repartition des depenses";
 		$subtitle = "";
-		$this->highchart_build_generic_pie(&$json_output, $title, $subtitle, $categories, $output, "{point.info}");
+		$this->highchart_build_generic_pie($json_output, $title, $subtitle, $categories, $output, "{point.info}");
 
 		print json_encode($json_output, JSON_NUMERIC_CHECK);
 	
@@ -919,7 +919,7 @@ class KAccount {
 
 		$title = "Balance";
 		$subtitle = $sum_income-$sum_expense." de $date1 à $date2";
-		$this->highchart_build_generic($chart, &$json_output, $title, $subtitle, $categories, $output, "<b>{point.y} €</b>", $options);
+		$this->highchart_build_generic($chart, $json_output, $title, $subtitle, $categories, $output, "<b>{point.y} €</b>", $options);
 
 		print json_encode($json_output, JSON_NUMERIC_CHECK);
 	}
@@ -993,7 +993,7 @@ class KAccount {
 
 		$title = "Historique de ".$tag_name;
 		$subtitle = $tot."€ sur $index derniers mois, moyenne = $avg"."€";
-		$this->highchart_build_generic($chart, &$json_output, $title, $subtitle, $categories, $output, "<b>{point.y} €</b>");
+		$this->highchart_build_generic($chart, $json_output, $title, $subtitle, $categories, $output, "<b>{point.y} €</b>");
 
 		print json_encode($json_output, JSON_NUMERIC_CHECK);
 	}
@@ -1095,7 +1095,7 @@ class KAccount {
 
 		$title = "Balance des 12 derniers mois";
 		$subtitle = "Cumul/moyenne depense/revenu : $total_depense/".round($total_depense/$on_last_month_number,2)." - $total_revenu/".round($total_revenu/$on_last_month_number,2);
-		$this->highchart_build_generic($chart, &$json_output, $title, $subtitle, $xaxis, $output, "<b>{point.y} €</b>");
+		$this->highchart_build_generic($chart, $json_output, $title, $subtitle, $xaxis, $output, "<b>{point.y} €</b>");
 
 		print json_encode($json_output, JSON_NUMERIC_CHECK);
 	}
@@ -1139,14 +1139,14 @@ class KAccount {
 		return $row["solde"] + $this->solde;
 	}
   
-  function get_solde_at($at_date)
+  function get_solde_at($at_trans_id,$at_date)
   {
-    $query = "SELECT ROUND(SUM(amount),2) as solde FROM `transaction` WHERE account_id = $this->id and tdate <= '$at_date'";
+    $query = "SELECT ROUND(SUM(amount),2) as solde FROM `transaction` WHERE account_id = $this->id and id < $at_trans_id and tdate>='$at_date'";
     $res=do_mysql_query($query );
 		if(!$res)
 			error(mysql_error());
 		$row=mysql_fetch_array($res,MYSQL_ASSOC);
-		return $row["solde"] + $this->solde;
+		return round($this->get_solde(0) - $row["solde"],2);
   }
 
     function get_sum_between($tr_type, $date1, $date2)

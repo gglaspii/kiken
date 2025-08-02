@@ -2,6 +2,7 @@
 function process_http_post(&$acc, &$p_array)
 {
 	//print_r($p_array);
+	//print_r($_FILES);
 	
 	if (isset($p_array["add_transaction"]))
 	{
@@ -15,6 +16,10 @@ function process_http_post(&$acc, &$p_array)
 	elseif (isset($p_array["datafile"]))
 	{
 		process_parse_ofx($acc, $p_array["datafile"]);
+	}
+	elseif (isset($p_array["upload_ofx"]))
+	{
+		process_upload_ressource($acc, $p_array);
 	}
 	elseif (isset($p_array["add_tag"]) && $p_array["add_tag"] === "Add")
 	{
@@ -134,6 +139,8 @@ function process_parse_ofx(&$acc, $datafile)
 	$amount = 0;
 	$tags = "";
 	$tdatetime = "";
+
+	echo "import for account $acc->name / $acc->id <br>";
 	
 	$file_path = "ressource/".$datafile;
 	$file_handle = fopen($file_path, "r");
@@ -143,7 +150,7 @@ function process_parse_ofx(&$acc, $datafile)
 		if (strstr($line, "</STMTTRN>"))
 		{
 			echo "end, amount = $amount <br>";
-			if ($amount !=0)
+			//if ($amount !=0)
 			{
 				$tdesc = preg_replace('/\s+/', ' ',$tdesc);
 				echo "end, tdesc = $tdesc, tdatetime=$tdatetime<br>";
@@ -152,8 +159,8 @@ function process_parse_ofx(&$acc, $datafile)
 				$tdesc = "";
 				$tdatetime = "";
 			}
-			else
-				continue;
+			//else
+				//continue;
 		}
 		else if (strstr($line, "DTPOSTED"))
 		{
@@ -182,6 +189,13 @@ function process_parse_ofx(&$acc, $datafile)
 		}
 	}
 	fclose($file_handle);
+}
+
+function process_upload_ressource($acc, &$p_array)
+{
+    $target_dir = "ressource/";
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    move_uploaded_file( $_FILES["fileToUpload"]["tmp_name"], $target_file );
 }
 
 function process_http_get(&$acc, &$g_array)
